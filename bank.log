@@ -34,3 +34,91 @@
 [2025-05-18 16:58:32] [INFO] 
 [2025-05-18 16:58:32] [INFO] 
 [2025-05-18 16:58:33] [INFO] 
+
+[2025-05-18 17:03:53] [INFO] ========== BANK SYSTEM STARTED ==========
+[2025-05-18 17:03:53] [INFO] 
+[2025-05-18 17:03:53] [INFO] 
+[2025-05-18 17:03:55] [WARNING] 
+[2025-05-18 17:04:08] [INFO] 
+[2025-05-18 17:04:08] [INFO] 
+[2025-05-18 17:04:11] [INFO] 
+[2025-05-18 17:04:11] [INFO] 
+[2025-05-18 17:04:12] [INFO] 
+[2025-05-18 17:04:30] [WARNING] 
+[2025-05-18 17:04:49] [INFO] 
+[2025-05-18 17:04:49] [INFO] 
+[2025-05-18 17:04:50] [INFO] 
+[2025-05-18 17:04:50] [INFO] 
+[2025-05-18 17:04:51] [INFO] 
+[2025-05-18 17:04:54] [INFO] 
+[2025-05-18 17:04:54] [INFO] 
+[2025-05-18 17:04:55] [INFO] 
+
+[2025-05-18 17:07:34] [INFO] ========== BANK SYSTEM STARTED ==========
+[2025-05-18 17:07:34] [INFO] 
+[2025-05-18 17:07:34] [INFO] 
+[2025-05-18 17:07:36] [WARNING] 
+[2025-05-18 17:07:49] [INFO] 
+[2025-05-18 17:07:49] [INFO] 
+[2025-05-18 17:07:52] [INFO] 
+[2025-05-18 17:07:52] [INFO] 
+[2025-05-18 17:07:53] [INFO] 
+[2025-05-18 17:08:00] [WARNING] 
+[2025-05-18 17:08:30] [INFO] 
+[2025-05-18 17:08:30] [INFO] 
+[2025-05-18 17:08:31] [INFO] 
+[2025-05-18 17:08:31] [INFO] 
+[2025-05-18 17:08:31] [INFO] ========== BANK SYSTEM STOPPED ==========
+
+[2025-05-18 17:08:37] [INFO] ========== BANK SYSTEM STARTED ==========
+[2025-05-18 17:08:37] [INFO] 
+[2025-05-18 17:08:37] [INFO] 
+[2025-05-18 17:08:39] [WARNING] 
+[2025-05-18 17:08:54] [INFO] 
+[2025-05-18 17:08:54] [INFO] 
+[2025-05-18 17:08:57] [INFO] 
+[2025-05-18 17:08:57] [INFO] 
+[2025-05-18 17:08:58] [INFO] 
+[2025-05-18 17:09:12] [INFO] 
+[2025-05-18 17:09:12] [INFO] 
+[2025-05-18 17:09:15] [INFO] 
+[2025-05-18 17:09:15] [INFO] 
+[2025-05-18 17:09:16] [INFO] 
+[2025-05-18 17:09:59] [INFO] 
+[2025-05-18 17:09:59] [INFO] 
+[2025-05-18 17:10:00] [INFO] 
+[2025-05-18 17:10:00] [INFO] 
+[2025-05-18 17:10:00] [INFO] ========== BANK SYSTEM STOPPED ==========
+
+[2025-05-18 17:11:44] [INFO] ========== BANK SYSTEM STARTED ==========
+[2025-05-18 17:11:44] [INFO] Bank system initialized
+[2025-05-18 17:11:44] [INFO] Loading data from bank.json
+[2025-05-18 17:11:46] [INFO] Data loaded successfully (2 accounts)
+[2025-05-18 17:11:55] [INFO] User requested new account: Name=Nuer, ID=102, Type=1
+[2025-05-18 17:11:55] [INFO] Opening new account for Nuer (ID: 102, Type: 1)
+[2025-05-18 17:11:58] [INFO] Account created for Nuer. Account Details: Number=100003, PIN=1846, Balance=1000
+[2025-05-18 17:11:58] [INFO] Saving data to bank.json
+[2025-05-18 17:11:59] [INFO] Data saved successfully (3 accounts)
+[2025-05-18 17:12:16] [INFO] User requested deposit: Account=100003, Amount=5000
+[2025-05-18 17:12:16] [INFO] Deposit request: Account 100003, Amount 5000
+[2025-05-18 17:12:17] [INFO] Deposit successful: Account 100003, Amount 5000, New Balance 6000
+[2025-05-18 17:12:17] [INFO] Saving data to bank.json
+[2025-05-18 17:12:18] [INFO] Data saved successfully (3 accounts)
+[2025-05-18 17:12:31] [INFO] User requested balance: Account=100003
+[2025-05-18 17:12:31] [INFO] Balance inquiry: Account 100003
+[2025-05-18 17:12:32] [INFO] Balance reported: Account 100003, Balance 6000
+[2025-05-18 17:12:44] [INFO] User requested statement: Account=100003
+[2025-05-18 17:12:44] [INFO] Statement request: Account 100003
+[2025-05-18 17:12:46] [WARNING] Statement request failed: Account 100003 not found or wrong PIN
+[2025-05-18 17:13:11] [INFO] User requested statement: Account=100003
+[2025-05-18 17:13:11] [INFO] Statement request: Account 100003
+[2025-05-18 17:13:13] [WARNING] Statement request failed: Account 100003 not found or wrong PIN
+[2025-05-18 17:15:51] [INFO] User requested statement: Account=100002
+[2025-05-18 17:15:51] [INFO] Statement request: Account 100002
+[2025-05-18 17:15:53] [INFO] Generating statement for account 100002 with 1 transactions
+[2025-05-18 17:16:16] [INFO] User requested statement: Account=100001
+[2025-05-18 17:16:16] [INFO] Statement request: Account 100001
+[2025-05-18 17:16:18] [INFO] Generating statement for account 100001 with 1 transactions
+[2025-05-18 17:16:34] [INFO] User requested statement: Account=100003
+[2025-05-18 17:16:34] [INFO] Statement request: Account 100003
+[2025-05-18 17:16:36] [INFO] Generating statement for account 100003 with 2 transactions

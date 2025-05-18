@@ -10,6 +10,7 @@
 #include <time.h>
 #include <errno.h>
 #include <unistd.h>  /* For sleep() function */
+#include <cstdarg>
 
 #define MAX_ACCTS      1000          /* maximum simultaneous accounts   */
 #define MIN_BALANCE    1000          /* Ksh. minimum account balance    */
@@ -105,10 +106,10 @@ static void log_message(log_level_t level, const char *format, ...) {
     
     fprintf(log_file, "[%s] [%s] ", timestamp, level_str);
     
-    // va_list args;
-    // va_start(args, format);
-    // vfprintf(log_file, format, args);
-    // va_end(args);
+    va_list args;
+    va_start(args, format);
+    vfprintf(log_file, format, args);
+    va_end(args);
     
     fprintf(log_file, "\n");
     fflush(log_file);

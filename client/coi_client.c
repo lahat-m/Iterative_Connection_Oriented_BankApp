@@ -759,7 +759,7 @@ static void get_statement(void) {
             transaction_t *t = &response.transactions[i];
             char buf[32];
             strftime(buf, sizeof(buf), "%d/%m/%Y %H:%M", localtime(&t->when));
-            printf("%-16s %c    %-7d %-7d\n", buf, t->type, t->amount, t->balance_after);
+printf("%-16s %c    %-7d %-7d\n", buf, t->type, t->amount, t->balance_after);
         }
         printf("\n");
     }

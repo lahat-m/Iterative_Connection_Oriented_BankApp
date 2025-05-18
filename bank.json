@@ -1,10 +1,11 @@
 {
   "version": 1,
-  "accounts_in_use": 3,
-  "next_number": 100004,
+  "accounts_in_use": 4,
+  "next_number": 100005,
   "accounts": [
-    {"number":100001,"pin":5544,"name":"test","nat_id":"104","type":1,"balance":1000,"ntran":1,"last":[{"type":"D","amount":1000,"when":1747577337,"balance_after":1000}]},
-    {"number":100002,"pin":3006,"name":"test2","nat_id":"105","type":1,"balance":1000,"ntran":1,"last":[{"type":"D","amount":1000,"when":1747577355,"balance_after":1000}]},
-    {"number":100003,"pin":1846,"name":"Nuer","nat_id":"102","type":1,"balance":6000,"ntran":2,"last":[{"type":"D","amount":1000,"when":1747577518,"balance_after":1000},{"type":"D","amount":5000,"when":1747577537,"balance_after":6000}]}
+    {"number":100001,"pin":8919,"name":"Mariel","nat_id":"200","type":1,"balance":4000,"ntran":2,"last":[{"type":"D","amount":1000,"when":1747588092,"balance_after":1000},{"type":"D","amount":3000,"when":1747588118,"balance_after":4000}]},
+    {"number":100002,"pin":9082,"name":"Yardit","nat_id":"101","type":1,"balance":1000,"ntran":1,"last":[{"type":"D","amount":1000,"when":1747590966,"balance_after":1000}]},
+    {"number":100003,"pin":9023,"name":"Adok","nat_id":"103","type":1,"balance":1000,"ntran":1,"last":[{"type":"D","amount":1000,"when":1747592254,"balance_after":1000}]},
+    {"number":100004,"pin":4245,"name":"Mariel","nat_id":"103","type":1,"balance":1000,"ntran":1,"last":[{"type":"D","amount":1000,"when":1747594580,"balance_after":1000}]}
   ]
 }

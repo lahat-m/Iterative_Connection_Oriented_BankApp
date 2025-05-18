@@ -1,0 +1,7 @@
+{
+  "accounts_in_use": 1,
+  "next_number": 100002,
+  "accounts": [
+    {"number":100001,"pin":8533,"name":"Adok","nat_id":"101","type":1,"balance":6000,"ntran":2,"last":[{"type":"D","amount":1000,"when":1747576647,"balance_after":1000},{"type":"D","amount":5000,"when":1747576674,"balance_after":6000}]}
+  ]
+}

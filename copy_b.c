@@ -1,5 +1,5 @@
 /*
- * Simple Online banking app with JSON persistence -- stand-alone version
+ * Simple on–line banking demo with JSON persistence (stand-alone version)
  *
  * gcc -std=c99 -Wall -o bank bank_standalone.c
  */
@@ -17,6 +17,7 @@
 #define MIN_WITHDRAW    500          /* Ksh. minimum withdrawal unit    */
 #define TRANS_KEEP        5          /* how many transactions to keep   */
 #define DATA_FILE      "bank.json"   /* data file name                  */
+#define CURRENT_VERSION  1           /* current data format version     */
 #define LOG_FILE       "bank.log"    /* log file name                   */
 #define SHORT_WAIT     1             /* short wait in seconds           */
 #define MEDIUM_WAIT    2             /* medium wait in seconds          */
@@ -362,10 +363,11 @@ static int save_data(void) {
     
     /* Start the main JSON object */
     fprintf(f, "{\n"
+               "  \"version\": %d,\n"
                "  \"accounts_in_use\": %d,\n"
                "  \"next_number\": %d,\n"
                "  \"accounts\": [\n",
-               accounts_in_use, next_number);
+               CURRENT_VERSION, accounts_in_use, next_number);
     
     /* Write all accounts */
     for (int i=0;i<accounts_in_use;i++) {
@@ -415,7 +417,27 @@ static int load_data(void) {
         fclose(f);
         return -1;
     }
-     
+    
+    /* Read version */
+    if (match_json_key(f, "version") < 0) {
+        fclose(f);
+        return -1;
+    }
+    
+    int version;
+    if (fscanf(f, "%d", &version) != 1) {
+        fclose(f);
+        return -1;
+    }
+    
+    /* Check version compatibility */
+    if (version > CURRENT_VERSION) {
+        log_message(LOG_WARNING, "Data file version %d is newer than supported version %d", 
+                    version, CURRENT_VERSION);
+        fprintf(stderr, "Warning: Data file version %d is newer than supported version %d.\n", 
+                version, CURRENT_VERSION);
+    }
+    
     /* Read accounts_in_use */
     if (skip_to_char(f, ',') < 0) {
         log_message(LOG_ERROR, "Failed to find accounts_in_use in the file");
@@ -712,7 +734,7 @@ account_t *open_account(const char *name, const char *nid, acct_type_t t)
     a->balance = MIN_BALANCE;              /* initial 1 k mandatory    */
     remember(a, 'D', MIN_BALANCE);
     
-    log_message(LOG_INFO, "Account created for %s. \nAccount Details:\n Number=%d, PIN=%04d, Balance=%d", a->name, 
+    log_message(LOG_INFO, "Account created for %s. Account Details: Number=%d, PIN=%04d, Balance=%d", a->name, 
                 a->number, a->pin, a->balance);
     
     // Save after modification
@@ -720,7 +742,6 @@ account_t *open_account(const char *name, const char *nid, acct_type_t t)
     return a;
 }
 
-/* acc closure handler */
 int close_account(int acc_no, int pin)
 {
     log_message(LOG_INFO, "Closing account %d", acc_no);
@@ -744,7 +765,6 @@ int close_account(int acc_no, int pin)
     return -1;                              /* not found / wrong pin */
 }
 
-/* Deposit handler */
 int deposit(int acc_no, int pin, int amount)
 {
     log_message(LOG_INFO, "Deposit request: Account %d, Amount %d", acc_no, amount);
@@ -774,7 +794,7 @@ int deposit(int acc_no, int pin, int amount)
     log_message(LOG_WARNING, "Deposit failed: Account %d not found or wrong PIN", acc_no);
     return -1;                              /* wrong acc/pin */
 }
-/* withdraw handler */
+
 int withdraw(int acc_no, int pin, int amount)
 {
     log_message(LOG_INFO, "Withdrawal request: Account %d, Amount %d", acc_no, amount);
@@ -810,7 +830,7 @@ int withdraw(int acc_no, int pin, int amount)
     log_message(LOG_WARNING, "Withdrawal failed: Account %d not found or wrong PIN", acc_no);
     return -1;
 }
-/* check balance handler */
+
 int balance(int acc_no, int pin, int *bal_out)
 {
     log_message(LOG_INFO, "Balance inquiry: Account %d", acc_no);
@@ -868,11 +888,11 @@ static void banner(void)
     puts("============== SIMPLE BANK (with JSON persistence) =============");
     puts("1: Open  2: Close  3: Deposit  4: Withdraw  5: Balance");
     puts("6: Statement  0: Quit");
-    puts("----------------------------------------------------------------");
+    puts("-------------------------------------------------------");
 }
 
 
-/* main function */
+
 int main(void)
 {
     srand(time(NULL));
@@ -881,7 +901,7 @@ int main(void)
     log_init();
     log_message(LOG_INFO, "Bank system initialized");
     
-    /* Load existing data at startup */
+    // Load existing data at startup
     if (load_data() != 0) {
         log_message(LOG_WARNING, "Could not load existing data. Starting fresh.");
         puts("Warning: Could not load existing data. Starting fresh.");
@@ -974,7 +994,6 @@ int main(void)
             log_message(LOG_WARNING, "User entered invalid choice: %d", choice);
             puts("!! Invalid choice");
         }
-        // log_close();
     }
     
     // Save data before exiting
@@ -983,8 +1002,9 @@ int main(void)
         puts("Warning: Could not save data on exit!");
     }
     
-    puts("Shutting down the System.");
-    sleep(MEDIUM_WAIT);
-    puts("BYE.");
+    log_message(LOG_INFO, "Bank system shutting down");
+    log_close();
+    
+    puts("Bye.");
     return 0;
 }

@@ -12,11 +12,11 @@ SERVER_DIR = ../server
 CONCURRENT_SRCS = main_concurrent.c bank_server_concurrent.c
 
 # Files from original server implementation (in SERVER_DIR)
-SERVER_SRCS = $(SERVER_DIR)/bank_account.c $(SERVER_DIR)/bank_persistence.c $(SERVER_DIR)/bank_log.c
+SERVER_SRCS = $(SERVER_DIR)/bank_account.c $(SERVER_DIR)/bank_persistence.c
 
 # Header files
 HEADERS = $(SERVER_DIR)/bank_common.h $(SERVER_DIR)/bank_account.h \
-          $(SERVER_DIR)/bank_persistence.h $(SERVER_DIR)/bank_log.h \
+          $(SERVER_DIR)/bank_persistence.h \
           bank_server_concurrent.h
 
 # Output executable name

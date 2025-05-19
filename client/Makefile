@@ -8,8 +8,8 @@ CFLAGS = -std=c99 -Wall
 all: bank_client
 
 # Compile client
-bank_client: bank_client.c client_network.c client_interpreter.c client_logger.c client_logic.c bank_client.h client_interpreter.h client_logger.h 
-	$(CC) $(CFLAGS) -o bank_client bank_client.c client_network.c client_interpreter.c client_logger.c client_logic.c
+bank_client: bank_client.c client_network.c client_interpreter.c client_logic.c bank_client.h client_interpreter.h 
+	$(CC) $(CFLAGS) -o bank_client bank_client.c client_network.c client_interpreter.c client_logic.c
 
 # Clean
 clean:

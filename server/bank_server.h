@@ -8,9 +8,8 @@
 #include "bank_common.h"
 
 /* Server function prototypes */
-void shutdown_server(int signal);
 void handle_client(int client_socket);
-int init_server(int port);
-void run_server(void);
+void shutdown_server(int port);
+int start_server(int port );
 
 #endif /* BANK_SERVER_H */

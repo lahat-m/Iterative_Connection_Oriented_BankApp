@@ -1,9 +1,0 @@
-{
-  "version": 1,
-  "accounts_in_use": 2,
-  "next_number": 100003,
-  "accounts": [
-    {"number":100001,"pin":7557,"name":"Yardit","nat_id":"102","type":1,"balance":1000,"ntran":1,"last":[{"type":"D","amount":1000,"when":1747644417,"balance_after":1000}]},
-    {"number":100002,"pin":3474,"name":"Child","nat_id":"105","type":2,"balance":4000,"ntran":2,"last":[{"type":"D","amount":1000,"when":1747645104,"balance_after":1000},{"type":"D","amount":3000,"when":1747645471,"balance_after":4000}]}
-  ]
-}

@@ -22,26 +22,19 @@
 #define DEFAULT_SERVER "127.0.0.1"
 #define DEFAULT_PORT   8888
 #define BUFFER_SIZE    1024
-#define LOG_FILE       "client.log"    /* log file name                   */
 #define SHORT_WAIT     1               /* short wait in seconds           */
 #define MEDIUM_WAIT    2               /* medium wait in seconds          */
 
-/* Log levels */
-typedef enum {
-    LOG_INFO = 0,
-    LOG_WARNING = 1,
-    LOG_ERROR = 2
-} log_level_t;
 
 /* Message commands between client and server */
 typedef enum {
-    CMD_OPEN = 1,         /* Open an account               */
-    CMD_CLOSE = 2,        /* Close an account              */
-    CMD_DEPOSIT = 3,      /* Deposit money                 */
-    CMD_WITHDRAW = 4,     /* Withdraw money                */
-    CMD_BALANCE = 5,      /* Check balance                 */
-    CMD_STATEMENT = 6,    /* Get transaction statement     */
-    CMD_QUIT = 0          /* Quit                          */
+    OPEN = 1,         /* Open an account               */
+    CLOSE = 2,        /* Close an account              */
+    DEPOSIT = 3,      /* Deposit money                 */
+    WITHDRAW = 4,     /* Withdraw money                */
+    BALANCE = 5,      /* Check balance                 */
+    STATEMENT = 6,    /* Get transaction statement     */
+    QUIT = 0          /* Quit                          */
 } command_t;
 
 /* Server response codes */
@@ -90,10 +83,7 @@ typedef struct {
 extern int client_socket;
 extern FILE *log_file;
 
-/* Function prototypes for logging */
-void log_init(void);
-void log_close(void);
-void log_message(log_level_t level, const char *format, ...);
+
 
 /* Function prototypes for networking */
 int connect_to_server(const char *server_ip, int port);

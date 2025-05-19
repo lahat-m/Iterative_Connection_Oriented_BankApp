@@ -1,12 +1,11 @@
 /*
  * Banking System - Main program
  *
- * Compile: gcc -std=c99 -Wall -o bank_server main.c bank_server.c bank_account.c bank_persistence.c bank_log.c
+ * Compile: gcc -std=c99 -Wall -o bank_server main.c bank_server.c bank_account.c bank_persistence.c
  * Run: ./bank_server [port]
  */
 
 #include "bank_common.h"
-#include "bank_log.h"
 #include "bank_persistence.h"
 #include "bank_account.h"
 #include "bank_server.h"
@@ -35,24 +34,18 @@ int main(int argc, char *argv[])
     signal(SIGINT, shutdown_server);
     signal(SIGTERM, shutdown_server);
 
-    // Initialize logging
-    log_init();
-
     // Load existing data
     if (load_data() != 0)
     {
-        log_message(LOG_WARNING, "Could not load existing data. Starting fresh.");
         fprintf(stderr, "Warning: Could not load existing data. Starting fresh.\n");
     }
 
-    // Initialize and run the server
-    if (init_server(port) != 0)
+    // Start the server (combined initialization and running)
+    if (start_server(port) != 0)
     {
-        log_message(LOG_ERROR, "Failed to initialize server. Exiting.");
+        fprintf(stderr, "Failed to start server. Exiting.\n");
         return EXIT_FAILURE;
     }
-
-    run_server();
 
     // Save data before exiting (though this should be handled by the signal handler)
     save_data();

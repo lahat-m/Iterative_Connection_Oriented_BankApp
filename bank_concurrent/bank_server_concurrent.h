@@ -6,13 +6,11 @@
 #define BANK_SERVER_CONCURRENT_H
 
 #include "../server/bank_common.h"
-#include <signal.h>  /* For struct sigaction */
+#include <sys/types.h>  /* For pid_t definition */
 
 /* Server function prototypes */
-void shutdown_server(int signal);
 void handle_client(int client_socket);
-int init_server(int port);
-void run_server(void);
-void child_handler(int sig);
+int start_concurrent_server(int port);
+void track_child_process(pid_t pid);
 
 #endif /* BANK_SERVER_CONCURRENT_H */
